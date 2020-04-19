@@ -7,6 +7,11 @@
  * }
  */
 class Solution {
+     /**
+     * 题目：将两个升序链表合并为一个新的升序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+     * 
+     * 解题思路：因为是有序链表，所以直接比较2个链表的头结点的值，然后使用上一步较小值的下一个结点和另一个链表继续比较，使用递归方式解决即可
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if(l1 == null){
             return l2;
