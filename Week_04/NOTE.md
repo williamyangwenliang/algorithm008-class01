@@ -106,17 +106,17 @@ int binarySearch(int[] nums, int target) {
 思考题：使用二分查找，寻找一个半有序数组 （如[4, 5, 6, 7, 0, 1, 2]） 中间无序的地方
 
 ```java
-	/**
+    /**
      * 解题思路：二分查找法，定义左右指针和中间指针，如果左半部分有序则说明无序部分在右半部分，反之亦然；直到左右指针重合即找到无序下标
      */
     public int search(int[] nums) {
         if (nums == null || nums.length <= 1) return -1;
-        if (nums.length == 2 && nums[0] < nums[1]) return -1;
         int left = 0;
         int right = nums.length - 1;
         while (left <= right) {
             int mid = (left + right) / 2;
             if (left == right) return left; //左右指针重合，即该index为无序位置
+            if (nums[left] <= nums[mid] && nums[mid] <= nums[right]) return -1; //有序数组
             if (nums[right] > nums[mid]) { //说明右半部分有序，改变右指针
                 right = mid;
             } else { //说明左半部分有序，改变左指针
