@@ -117,10 +117,11 @@ int binarySearch(int[] nums, int target) {
         if (nums == null || nums.length <= 1) return -1;
         int left = 0;
         int right = nums.length - 1;
+		int mid = (left + right) / 2;
+		if (nums[left] <= nums[mid] && nums[mid] <= nums[right]) return -1; //有序数组
         while (left <= right) {
-            int mid = (left + right) / 2;
-            if (left == right) return left; //左右指针重合，即该index为无序位置
-            if (nums[left] <= nums[mid] && nums[mid] <= nums[right]) return -1; //有序数组
+            mid = (left + right) / 2;
+            if (left == mid) return left; //左右指针重合，即该index为无序位置
             if (nums[right] > nums[mid]) { //说明右半部分有序，改变右指针
                 right = mid;
             } else { //说明左半部分有序，改变左指针
